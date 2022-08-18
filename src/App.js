@@ -1,6 +1,6 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { setData, clearData, inputId, incrementId, decrementId } from './features/dataSlice';
+import { clearData, inputId, incrementId, decrementId, fetchData } from './features/dataSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,10 +23,11 @@ function App() {
         <button onClick={() => dispatch(incrementId())}>Next</button>
         <button onClick={() => dispatch(decrementId())}>Back</button>
       </div>
-      <input onChange={(e) => { 
+      <input value={ data.objectId } onChange={(e) => { 
         dispatch(inputId(Number(e.target.value)))
       }} />
       <div>
+        {data.objectId}
         {renderImg()}
       </div>
     </div>
